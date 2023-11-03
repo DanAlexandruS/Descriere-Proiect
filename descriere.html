@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+       <title>Descriere baza de date</title> 
+       <link rel="stylesheet" type="text/css" href="styles.css">
+    </head>
+    <h1>
+        Descriere proiect baza de date
+    </h1>
+    <body>
+        <nav>
+            <ul>
+              <li><a href="#section1">Entitatile</a></li>
+              <li><a href="#section2">Relatiile intre entitati</a></li>
+            </ul>
+          </nav>
+        <section id="section1">
+            <h2>
+                Entitatile:
+            </h2>
+            <ul>
+                <li><strong>Produse</strong></li>
+                <ul>
+                <li>Cod de produs(id)</li>
+                  <li>Nume produs</li>
+                  <li>Descriere</li>
+                  <li>Pret</li>
+                  <li>Stoc disponibil</li>
+                  <li>Categorie (legatura cu "Categorie Produse")</li>
+                  <li>Data adaugarii in magazin</li>
+                </ul>
+                <li><strong>Clienti</strong></li>
+                <ul>
+                  <li>Id client</li>
+                  <li>Nume client</li>
+                  <li>Adresa de livrare</li>
+                  <li>Adresa de facturare</li>
+                  <li>Adresa de e-mail</li>
+                  <li>Numar de telefon</li>
+                  <li>Data inregistrarii</li>
+                  <li>Parola</li>
+                </ul>
+                <li><strong>Comenzi</strong></li>
+                <ul>
+                  <li>Numar de comanda(id)</li>
+                  <li>Data comenzii</li>
+                  <li>Statusul comenzii</li>
+                  <li>Total comanda</li>
+                  <li>Client (legatura cu tabelul de clienti)</li>
+                </ul>
+                <li><strong>Recenzii</strong></li>
+                <ul>
+                  <li>Id recenzie</li>
+                  <li>Textul recenziei</li>
+                  <li>Nota acordata (ex. 1-5 stele)</li>
+                  <li>Data recenziei</li>
+                  <li>Autor (legatura cu tabelul de clienti)</li>
+                  <li>Produs la care se refera (legatura cu tabelul de produse)</li>
+                </ul>
+                <li><strong>Categorii de Produse</strong></li>
+                <ul>
+                  <li>Nume categorie(id)</li>
+                  <li>Descriere categorie</li>
+                </ul>
+                <li><strong>Produs-Comanda</strong></li>
+                <ul>
+                  <li>Id</li>
+                  <li>Id produs</li>
+                  <li>Id comanda</li>
+                  <li>cantitate_produs</li>
+                </ul>
+                <li><strong>Tranzactii</strong></li>
+                <ul>
+                  <li>Id tranzactie</li>
+                  <li>Suma platita</li>
+                  <li>Data tranzactiei</li>
+                  <li>Numar de comanda asociat (legatura cu tabelul de comenzi)</li>
+                </ul>
+              </ul>
+              
+        </section>
+
+        <section id="section2">
+            <h2>Relatiile si explicatii:</h2>
+            <h3>Relatii:</h3>
+            <ol>
+                <li>Intre <strong>Produse</strong> si <strong>Categorii produse</strong> este
+                    o relatie "One-to-Many" deoarece un produs poate aparține unei sau mai multor categorii, 
+                    iar fiecare categorie poate avea mai multe produse.
+                </li>
+
+                <li>
+                    Intre <strong>Client</strong> si <strong>Comenzi</strong> se afla o relatie
+                    de tip "One-to-many" deoarece un client poate plasa una sau mai multe comenzi,
+                     dar fiecare comandă este asociată cu un singur client.
+                </li>
+
+                <li>
+                    Intre <strong>Produse</strong> si <strong>Recenzii</strong> se afla o relatie de tip "One-to-Many"
+                    deoarece un produs poate avea mai multe recenzii și evaluări scrise de clienți.
+                </li>
+
+                <li>
+                    Intre <strong>Produs</strong> si <strong>Produs-Comanda</strong> se afla o relatie
+                    de tip "One-to-many" deoarce intr-un Produs-comanda se afla un singur produs
+                    iar un produs se poate afla in mai multe Produs-Comanda  
+                </li>
+
+                <li>
+                    Intre <strong>Comanda</strong> si <strong>Produs-Comanda</strong> se afla o relatie
+                    de tip "One-to-many" deoarce intr-un Produs-comanda se afla o singura comanda
+                    iar o comanda se poate afla in mai multe Produs-Comanda.  
+                </li>
+
+                <li>
+                    Intre <strong>Comanda</strong> si <strong>Tranzactii</strong> se afla o relatie
+                    de tip "One-to-One" deoarece unei Comenzi ii corespunde o tranzactie , iar unei tranzactii
+                    ii corespunde o singura comanda.
+                </li>
+            </ol>
+            <h3>Explicatii:</h3>
+            <p>Functionalitatea principala a aplicatiei va fi cumpararea de produse de catre un client.
+                Dupa ce clientul va realiza o comanda ,  ea va fi salvata automat si o tranzactie cu numarul comenzii.
+                Intre comanda si produse va fi facuta legatura prin utilizare entitatii "Produs-Comanda".Clientul va putea face comanda
+                doar daca are suficienti bani in cont.
+            </p>
+        </section>
+
+        <section>
+            <h2>
+                Imagine entitati si relatiile intre ele
+            </h2>
+
+            <img src="erd-baza-date-php.jpeg" alt="Imagine ERD">
+        </section>
+    </body>
+
+
+
+
+
+
+</html>
